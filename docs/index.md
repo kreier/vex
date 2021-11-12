@@ -1,10 +1,37 @@
 # VEX
 
-Programs for team 76209X of the SSIS Dragons X
+Programs for team 76209X of the SSIS Dragons X. Code, functions and highscores constantly improve.
 
-Here is a recent code example:
+## Highscore
+
+- 09/27/2021 43 points
+- 10/08/2021 96 points
+- 11/01/2021 102 points
+- 11/06/2021 111 points
+- 11/08/2021 130 points
+
+## Latest code
+
+Created November 8th. With the new `move(direction, coordinate, reverse)` function.
+
+Possible update: rewrite the `move` function to `move( x-coordinate, y-coordinate, reverse)` and adjust the direction with starting position (GPS) and trigonometry. And then add more locations within one minute.
 
 ``` py
+----------------------------------------------------------------------
+#   
+#   Project:            Calling GPS functions
+#   Description:        Get more than 100 points with GPS
+#                       Driving style: drive, check, correct
+#   Date:               08.11.2021
+#   Maximum score:      130 points
+#   Time left:          10 seconds
+#
+#   Starting position:  A
+#   Orientation:        Facing East (standard)
+#   Preload:            Zero Rings
+#
+#----------------------------------------------------------------------
+
 # Library imports
 from vexcode_vrc import *
 
