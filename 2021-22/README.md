@@ -1,192 +1,10 @@
 # Documentation of programming progress
 
-Starting in September 2021 we slowly moved from the blocky code to python. And our scores increased as well. Here just 43 points:
+## November 8th, 2021 - 132 points
 
-``` py
-def when_started1():
-    global myVariable
-    fork_motor_group.spin_to_position(1100, DEGREES, wait=False)
-    drivetrain.turn_for(RIGHT, 22, DEGREES, wait=True)
-    drivetrain.drive_for(FORWARD, 1200, MM, wait=True)
-    drivetrain.drive_for(REVERSE, 100, MM, wait=True)
-    drivetrain.turn_for(LEFT, 20, DEGREES, wait=True)
-    fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
-    drivetrain.drive_for(FORWARD, 200, MM, wait=True)
-    fork_motor_group.spin_to_position(1300, DEGREES, wait=True)
-    drivetrain.drive_for(REVERSE, 700, MM, wait=True)
-    drivetrain.turn_to_heading(270, DEGREES, wait=True)
-    drivetrain.drive_for(FORWARD, 500, MM, wait=True)
-    fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
-    drivetrain.drive_for(REVERSE, 300, MM, wait=True)
-    drivetrain.turn_to_heading(350, DEGREES, wait=True)
-    drivetrain.drive_for(FORWARD, 1400, MM, wait=True)
-    drivetrain.turn_to_heading(320, DEGREES, wait=True)
-    fork_motor_group.spin_to_position(1100, DEGREES, wait=True)
-    drivetrain.drive_for(FORWARD, 200, MM, wait=True)
-    fork_motor_group.spin_to_position(1200, DEGREES, wait=True)
-    drivetrain.drive_for(REVERSE, 300, MM, wait=True)
-    fork_motor_group.spin_to_position(1800, DEGREES, wait=False)
-    drivetrain.turn_to_heading(340, DEGREES, wait=True)
-    drivetrain.drive_for(FORWARD, 400, MM, wait=True)
-    fork_motor_group.spin_to_position(1200, DEGREES, wait=True)
-    drivetrain.drive_for(REVERSE, 1600, MM, wait=True)
-    stop_project()
+![November 8th with 132 points](../docs/2021-11-08_132p.png)
 
-vr_thread(when_started1)
-```
-
-By October 8th we gained already 96 points:
-
-``` py
-myVariable = 0
-
-def when_started1():
-    global myVariable
-    fork_motor_group.spin_to_position(1100, DEGREES, wait=False)
-    drivetrain.turn_for(RIGHT, 22, DEGREES, wait=True)
-
-    # Get goalpost with 2 rings into our zone (22 points)
-    drivetrain.drive_for(FORWARD, 1200, MM, wait=True)
-    drivetrain.set_drive_velocity(100, PERCENT)
-    drivetrain.set_turn_velocity(100, PERCENT)
-    drivetrain.drive_for(REVERSE, 100, MM, wait=True)
-    drivetrain.turn_for(LEFT, 20, DEGREES, wait=True)
-    fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
-    drivetrain.drive_for(FORWARD, 200, MM, wait=True)
-    fork_motor_group.spin_to_position(1300, DEGREES, wait=True)
-    drivetrain.drive_for(REVERSE, 800, MM, wait=True)
-    drivetrain.turn_to_heading(90, DEGREES, wait=True)
-    drivetrain.drive_for(FORWARD, 800, MM, wait=True)
-    fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
-    drivetrain.drive_for(REVERSE, 1200, MM, wait=True)
-
-    # Remove blue goalpost from lever
-    drivetrain.turn_to_heading(130, DEGREES, wait=True)
-    drivetrain.drive_for(FORWARD, 600, MM, wait=True)
-    fork_motor_group.spin_to_position(1300, DEGREES, wait=True)
-    drivetrain.drive_for(REVERSE, 500, MM, wait=True)
-    drivetrain.turn_to_heading(90, DEGREES, wait=True)
-    drivetrain.drive_for(FORWARD, 750, MM, wait=True)
-    fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
-    drivetrain.drive_for(REVERSE, 580, MM, wait=True)
-
-    # Get red goalpost
-    drivetrain.turn_to_heading(0, DEGREES, wait=True)
-    drivetrain.drive_for(FORWARD, 1600, MM, wait=True)
-    fork_motor_group.spin_to_position(1100, DEGREES, wait=True)
-    drivetrain.turn_to_heading(320, DEGREES, wait=True)
-    drivetrain.drive_for(FORWARD, 300, MM, wait=True)
-    drivetrain.drive_for(REVERSE, 300, MM, wait=True)
-    fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
-    drivetrain.turn_to_heading(300, DEGREES, wait=True)
-    drivetrain.drive_for(FORWARD, 400, MM, wait=True)
-    fork_motor_group.spin_to_position(0, DEGREES, wait=False)
-    drivetrain.drive_for(REVERSE, 300, MM, wait=True)
-    drivetrain.turn_to_heading(0, DEGREES, wait=True)
-    drivetrain.drive_for(REVERSE, 1900, MM, wait=True)
-
-    # Get on the balance
-    drivetrain.set_drive_velocity(50, PERCENT)
-    drivetrain.set_turn_velocity(50, PERCENT)
-    drivetrain.turn_to_heading(125, DEGREES, wait=True)
-    drivetrain.drive_for(FORWARD, 400, MM, wait=True)
-    drivetrain.turn_to_heading(90, DEGREES, wait=True)
-    drivetrain.drive_for(FORWARD, 200, MM, wait=True)
-    fork_motor_group.spin_to_position(1700, DEGREES, wait=True)
-    drivetrain.drive_for(FORWARD, 750, MM, wait=True)
-    drivetrain.stop()
-    wait(1, SECONDS)
-    stop_project()
-
-vr_thread(when_started1)
-```
-
-With the help of the GPS sensor on November 1st the score jumped to 101.
-
-``` py
-myVariable = 0
-
-
-def when_started1():
-   global myVariable
-
-   # put the blue in  the middle of the platform
-   fork_motor_group.spin_to_position(1800, DEGREES, wait=False)
-   drivetrain.turn_to_heading(98, DEGREES, wait=True)
-   wait(2, SECONDS)
-   drivetrain.drive_for(FORWARD, 450, MM, wait=True)
-   fork_motor_group.spin_to_position(1400, DEGREES, wait=True)
-   drivetrain.drive_for(FORWARD, 100, MM, wait=True)
-   drivetrain.turn_to_heading(90, DEGREES, wait=True)
-   drivetrain.drive_for(FORWARD, 700, MM, wait=True)
-   fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
-   drivetrain.drive_for(REVERSE, 900, MM, wait=True)
-
-   # put yellow on lever
-   drivetrain.turn_to_rotation(4, DEGREES, wait=True)
-   fork_motor_group.spin_to_position(1800, DEGREES, wait=False)
-   drivetrain.drive_for(FORWARD, 1350, MM, wait=True)
-   fork_motor_group.spin_to_position(800, DEGREES, wait=False)
-   drivetrain.set_drive_velocity(70, PERCENT)
-   while gps.x_position(MM) > -1400:
-       drivetrain.drive(REVERSE)
-       wait(5, MSEC)
-   drivetrain.stop()
-   drivetrain.turn_to_heading(97, DEGREES, wait=True)
-   drivetrain.drive_for(FORWARD, 350, MM, wait=True)
-   fork_motor_group.spin_to_position(1750, DEGREES, wait=True)
-   drivetrain.drive_for(FORWARD, 100, MM, wait=True)
-   drivetrain.turn_to_rotation(93, DEGREES, wait=True)
-   drivetrain.drive_for(FORWARD, 470, MM, wait=True)
-   fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
-   wait(1, SECONDS)
-   drivetrain.drive_for(REVERSE, 1070, MM, wait=True)
-
-   # get red in our sector
-   drivetrain.turn_to_heading(-6, DEGREES, wait=True)
-   drivetrain.drive_for(FORWARD, 2200, MM, wait=True)
-   fork_motor_group.spin_to_position(1400, DEGREES, wait=True)
-   while gps.x_position(MM) > -800:
-       drivetrain.drive(REVERSE)
-       wait(5, MSEC)
-   drivetrain.stop()
-   drivetrain.set_turn_velocity(100, PERCENT)
-   drivetrain.turn_to_rotation(-90, DEGREES, wait=True)
-   fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
-   drivetrain.drive_for(REVERSE, 1100, MM, wait=True)
-
-   # get second yellow in our sector
-   while gps.y_position(MM) > 50:
-       drivetrain.drive(REVERSE)
-       wait(5, MSEC)
-   drivetrain.turn_to_heading(0, DEGREES, wait=True)
-   drivetrain.drive_for(FORWARD, 900, MM, wait=True)
-   fork_motor_group.spin_to_position(1400, DEGREES, wait=True)
-   drivetrain.drive_for(REVERSE, 900, MM, wait=True)
-   drivetrain.turn_to_heading(270, DEGREES, wait=True)
-   fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
-   drivetrain.drive_for(REVERSE, 920, MM, wait=True)
-
-   # get third yellow in our sector
-   drivetrain.turn_to_heading(0, DEGREES, wait=True)
-   drivetrain.drive_for(FORWARD, 1200, MM, wait=True)
-   fork_motor_group.spin_to_position(1400, DEGREES, wait=True)
-   drivetrain.turn_to_heading(180, DEGREES, wait=True)
-   drivetrain.drive_for(FORWARD, 1200, MM, wait=True)
-   fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
-   drivetrain.turn_to_heading(190, DEGREES, wait=True)
-   drivetrain.drive_for(REVERSE, 2200, MM, wait=True)
-   drivetrain.turn_to_heading(270, DEGREES, wait=True)
-   drivetrain.drive_for(FORWARD, 700, MM, wait=True)
-   fork_motor_group.spin_to_position(1400, DEGREES, wait=True)
-   drivetrain.drive_for(FORWARD, 700, MM, wait=True)
-   stop_project()
-
-
-vr_thread(when_started1)
-```
-
-And finally on November 8th with the new programmed move(direction, distance, reverse) function we scored 130 points, using a much easier to read codel
+And finally on November 8th with the new programmed `move(direction, distance, reverse)` function was created. With less lines and a much easier to read code we scored 130 points.
 
 ``` py
 #----------------------------------------------------------------------
@@ -297,4 +115,198 @@ def main():
 
 # VR threads - Do not delete
 vr_thread(main)
+```
+
+## November 1st, 2021 - 101 points
+
+A sequential approach becomes more and more unpredictable. With the help of the GPS sensor on November 1st the score jumped to 101 points. But the code is very hard to read. And redundant in many places. This calls for a function to define!
+
+``` py
+myVariable = 0
+
+
+def when_started1():
+   global myVariable
+
+   # put the blue in  the middle of the platform
+   fork_motor_group.spin_to_position(1800, DEGREES, wait=False)
+   drivetrain.turn_to_heading(98, DEGREES, wait=True)
+   wait(2, SECONDS)
+   drivetrain.drive_for(FORWARD, 450, MM, wait=True)
+   fork_motor_group.spin_to_position(1400, DEGREES, wait=True)
+   drivetrain.drive_for(FORWARD, 100, MM, wait=True)
+   drivetrain.turn_to_heading(90, DEGREES, wait=True)
+   drivetrain.drive_for(FORWARD, 700, MM, wait=True)
+   fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
+   drivetrain.drive_for(REVERSE, 900, MM, wait=True)
+
+   # put yellow on lever
+   drivetrain.turn_to_rotation(4, DEGREES, wait=True)
+   fork_motor_group.spin_to_position(1800, DEGREES, wait=False)
+   drivetrain.drive_for(FORWARD, 1350, MM, wait=True)
+   fork_motor_group.spin_to_position(800, DEGREES, wait=False)
+   drivetrain.set_drive_velocity(70, PERCENT)
+   while gps.x_position(MM) > -1400:
+       drivetrain.drive(REVERSE)
+       wait(5, MSEC)
+   drivetrain.stop()
+   drivetrain.turn_to_heading(97, DEGREES, wait=True)
+   drivetrain.drive_for(FORWARD, 350, MM, wait=True)
+   fork_motor_group.spin_to_position(1750, DEGREES, wait=True)
+   drivetrain.drive_for(FORWARD, 100, MM, wait=True)
+   drivetrain.turn_to_rotation(93, DEGREES, wait=True)
+   drivetrain.drive_for(FORWARD, 470, MM, wait=True)
+   fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
+   wait(1, SECONDS)
+   drivetrain.drive_for(REVERSE, 1070, MM, wait=True)
+
+   # get red in our sector
+   drivetrain.turn_to_heading(-6, DEGREES, wait=True)
+   drivetrain.drive_for(FORWARD, 2200, MM, wait=True)
+   fork_motor_group.spin_to_position(1400, DEGREES, wait=True)
+   while gps.x_position(MM) > -800:
+       drivetrain.drive(REVERSE)
+       wait(5, MSEC)
+   drivetrain.stop()
+   drivetrain.set_turn_velocity(100, PERCENT)
+   drivetrain.turn_to_rotation(-90, DEGREES, wait=True)
+   fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
+   drivetrain.drive_for(REVERSE, 1100, MM, wait=True)
+
+   # get second yellow in our sector
+   while gps.y_position(MM) > 50:
+       drivetrain.drive(REVERSE)
+       wait(5, MSEC)
+   drivetrain.turn_to_heading(0, DEGREES, wait=True)
+   drivetrain.drive_for(FORWARD, 900, MM, wait=True)
+   fork_motor_group.spin_to_position(1400, DEGREES, wait=True)
+   drivetrain.drive_for(REVERSE, 900, MM, wait=True)
+   drivetrain.turn_to_heading(270, DEGREES, wait=True)
+   fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
+   drivetrain.drive_for(REVERSE, 920, MM, wait=True)
+
+   # get third yellow in our sector
+   drivetrain.turn_to_heading(0, DEGREES, wait=True)
+   drivetrain.drive_for(FORWARD, 1200, MM, wait=True)
+   fork_motor_group.spin_to_position(1400, DEGREES, wait=True)
+   drivetrain.turn_to_heading(180, DEGREES, wait=True)
+   drivetrain.drive_for(FORWARD, 1200, MM, wait=True)
+   fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
+   drivetrain.turn_to_heading(190, DEGREES, wait=True)
+   drivetrain.drive_for(REVERSE, 2200, MM, wait=True)
+   drivetrain.turn_to_heading(270, DEGREES, wait=True)
+   drivetrain.drive_for(FORWARD, 700, MM, wait=True)
+   fork_motor_group.spin_to_position(1400, DEGREES, wait=True)
+   drivetrain.drive_for(FORWARD, 700, MM, wait=True)
+   stop_project()
+
+
+vr_thread(when_started1)
+```
+
+
+## October 8th, 2021 - 96 points
+
+Still using the blocky code (here exported as python) on October 8th we gained already 96 points:
+
+``` py
+myVariable = 0
+
+def when_started1():
+    global myVariable
+    fork_motor_group.spin_to_position(1100, DEGREES, wait=False)
+    drivetrain.turn_for(RIGHT, 22, DEGREES, wait=True)
+
+    # Get goalpost with 2 rings into our zone (22 points)
+    drivetrain.drive_for(FORWARD, 1200, MM, wait=True)
+    drivetrain.set_drive_velocity(100, PERCENT)
+    drivetrain.set_turn_velocity(100, PERCENT)
+    drivetrain.drive_for(REVERSE, 100, MM, wait=True)
+    drivetrain.turn_for(LEFT, 20, DEGREES, wait=True)
+    fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
+    drivetrain.drive_for(FORWARD, 200, MM, wait=True)
+    fork_motor_group.spin_to_position(1300, DEGREES, wait=True)
+    drivetrain.drive_for(REVERSE, 800, MM, wait=True)
+    drivetrain.turn_to_heading(90, DEGREES, wait=True)
+    drivetrain.drive_for(FORWARD, 800, MM, wait=True)
+    fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
+    drivetrain.drive_for(REVERSE, 1200, MM, wait=True)
+
+    # Remove blue goalpost from lever
+    drivetrain.turn_to_heading(130, DEGREES, wait=True)
+    drivetrain.drive_for(FORWARD, 600, MM, wait=True)
+    fork_motor_group.spin_to_position(1300, DEGREES, wait=True)
+    drivetrain.drive_for(REVERSE, 500, MM, wait=True)
+    drivetrain.turn_to_heading(90, DEGREES, wait=True)
+    drivetrain.drive_for(FORWARD, 750, MM, wait=True)
+    fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
+    drivetrain.drive_for(REVERSE, 580, MM, wait=True)
+
+    # Get red goalpost
+    drivetrain.turn_to_heading(0, DEGREES, wait=True)
+    drivetrain.drive_for(FORWARD, 1600, MM, wait=True)
+    fork_motor_group.spin_to_position(1100, DEGREES, wait=True)
+    drivetrain.turn_to_heading(320, DEGREES, wait=True)
+    drivetrain.drive_for(FORWARD, 300, MM, wait=True)
+    drivetrain.drive_for(REVERSE, 300, MM, wait=True)
+    fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
+    drivetrain.turn_to_heading(300, DEGREES, wait=True)
+    drivetrain.drive_for(FORWARD, 400, MM, wait=True)
+    fork_motor_group.spin_to_position(0, DEGREES, wait=False)
+    drivetrain.drive_for(REVERSE, 300, MM, wait=True)
+    drivetrain.turn_to_heading(0, DEGREES, wait=True)
+    drivetrain.drive_for(REVERSE, 1900, MM, wait=True)
+
+    # Get on the balance
+    drivetrain.set_drive_velocity(50, PERCENT)
+    drivetrain.set_turn_velocity(50, PERCENT)
+    drivetrain.turn_to_heading(125, DEGREES, wait=True)
+    drivetrain.drive_for(FORWARD, 400, MM, wait=True)
+    drivetrain.turn_to_heading(90, DEGREES, wait=True)
+    drivetrain.drive_for(FORWARD, 200, MM, wait=True)
+    fork_motor_group.spin_to_position(1700, DEGREES, wait=True)
+    drivetrain.drive_for(FORWARD, 750, MM, wait=True)
+    drivetrain.stop()
+    wait(1, SECONDS)
+    stop_project()
+
+vr_thread(when_started1)
+```
+
+
+## September 27th, 2021 - 43 points
+
+Starting in September 2021 we slowly moved from the blocky code to python. And our scores increased as well. Here just 43 points:
+
+``` py
+def when_started1():
+    global myVariable
+    fork_motor_group.spin_to_position(1100, DEGREES, wait=False)
+    drivetrain.turn_for(RIGHT, 22, DEGREES, wait=True)
+    drivetrain.drive_for(FORWARD, 1200, MM, wait=True)
+    drivetrain.drive_for(REVERSE, 100, MM, wait=True)
+    drivetrain.turn_for(LEFT, 20, DEGREES, wait=True)
+    fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
+    drivetrain.drive_for(FORWARD, 200, MM, wait=True)
+    fork_motor_group.spin_to_position(1300, DEGREES, wait=True)
+    drivetrain.drive_for(REVERSE, 700, MM, wait=True)
+    drivetrain.turn_to_heading(270, DEGREES, wait=True)
+    drivetrain.drive_for(FORWARD, 500, MM, wait=True)
+    fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
+    drivetrain.drive_for(REVERSE, 300, MM, wait=True)
+    drivetrain.turn_to_heading(350, DEGREES, wait=True)
+    drivetrain.drive_for(FORWARD, 1400, MM, wait=True)
+    drivetrain.turn_to_heading(320, DEGREES, wait=True)
+    fork_motor_group.spin_to_position(1100, DEGREES, wait=True)
+    drivetrain.drive_for(FORWARD, 200, MM, wait=True)
+    fork_motor_group.spin_to_position(1200, DEGREES, wait=True)
+    drivetrain.drive_for(REVERSE, 300, MM, wait=True)
+    fork_motor_group.spin_to_position(1800, DEGREES, wait=False)
+    drivetrain.turn_to_heading(340, DEGREES, wait=True)
+    drivetrain.drive_for(FORWARD, 400, MM, wait=True)
+    fork_motor_group.spin_to_position(1200, DEGREES, wait=True)
+    drivetrain.drive_for(REVERSE, 1600, MM, wait=True)
+    stop_project()
+
+vr_thread(when_started1)
 ```
