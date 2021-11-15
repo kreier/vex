@@ -10,6 +10,8 @@ Programs for team 76209X of the SSIS Dragons X. Code, functions and highscores c
 - 11/06/2021 111 points
 - 11/08/2021 130 points
 
+![132 points](docs/2021-11-08_132p.png)
+
 ## Latest code
 
 Created November 8th. With the new `move(direction, coordinate, reverse)` function.
