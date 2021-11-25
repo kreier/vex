@@ -1,5 +1,8 @@
 # VEX
 
+[![GitHub release](https://img.shields.io/github/release/kreier/vex.svg)](https://GitHub.com/kreier/vex/releases/)
+[![MIT license](https://img.shields.io/github/license/kreier/vex)](https://kreier.mit-license.org/)
+
 Programs for team 76209X of the SSIS Dragons X. Code, functions and highscores constantly improve.
 
 ## Highscore
