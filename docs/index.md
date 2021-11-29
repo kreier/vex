@@ -11,11 +11,27 @@ Programs for team 76209X of the SSIS Dragons X. Code, functions and highscores c
 - 11/08/2021 130 points
 - 11/23/2021 172 points
 
+![173 points](173points.png)
+
+## Almost 200 points at the end of November
+
+Here is the code to reach this score:
+
+``` py
+# Library imports
+from vexcode_vrc import *
+
+def move(direction, coordinate, reverse):
+    global angle, x, y, head, dist
+    angle = 0
+    x = gps.x_position(MM)
+```
+
 ![Screenshot of 132 points](2021-11-08_132p.png)
 
-## Latest code
+## Code from November 8th, 2021
 
-Created November 8th. With the new `move(direction, coordinate, reverse)` function.
+Finally with a function to easier maintain the code and improve readability. The new `move(direction, coordinate, reverse)` function was created and used for the following 4 weeks.
 
 Possible update: rewrite the `move` function to `move( x-coordinate, y-coordinate, reverse)` and adjust the direction with starting position (GPS) and trigonometry. And then add more locations within one minute.
 
@@ -130,40 +146,7 @@ def main():
 vr_thread(main)
 ```
 
-## Welcome to GitHub Pages
+## Finally
 
-You can use the [editor on GitHub](https://github.com/kreier/vex/edit/gh-pages/docs/index.md) to maintain and preview the content for your website in Markdown files.
+More code and older attempts starting September 2021 are in the Github project page.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/kreier/vex/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
