@@ -14,7 +14,7 @@ Programs for team 76209X of the SSIS Dragons X. Code, functions and highscores c
 - 11/08/2021 130 points
 - 11/23/2021 173 points
 
-![132 points](docs/2021-11-08_132p.png)
+![173 points](docs/173points.png)
 
 ## Latest code
 
