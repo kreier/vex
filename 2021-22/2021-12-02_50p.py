@@ -1,11 +1,11 @@
 #----------------------------------------------------------------------
 #   
-#   Project:            New goto function
+#   Project:            New goto funtion
 #   Description:        Just point the target coordinates
 #                       
 #   Date:               02.12.2021
-#   Maximum score:      50 points
-#   Time left:          30 seconds
+#   Maximum score:      42 points
+#   Time left:          39 seconds
 #
 #   Starting position:  A
 #   Orientation:        Facing East (standard, 0 for the robot)
@@ -29,13 +29,19 @@ def goto(target_x, target_y, reverse):
     delta_y = y2 - y1
     distance = math.sqrt(delta_x**2 + delta_y**2)     # pythagorean theorem
     if ( delta_x ):
-        directio = math.atan(delta_y / delta_x) * 180 / math.pi
+        directio = - math.atan(delta_y / delta_x) * 180 / math.pi
     else:
         directio = 90
 
-    #directio = math.atan(delta_y / delta_x) * 180 / math.pi  
+    if ( delta_x < 0 ):
+        directio = directio + 180
+
     monitor_variable("angle","x1","y1", "x2", "y2", "delta_x", "delta_y","head", "distance", "directio")
-    wait(5,SECONDS)
+    drivetrain.turn_to_heading(directio, DEGREES, wait=True)
+    if (reverse == 0):
+        drivetrain.drive_for(FORWARD, distance, MM, wait=True)
+    else:
+        drivetrain.drive_for(REVERSE, -distance, MM, wait=True)
 
 def move(direction, coordinate, reverse):
     global angle, x, y, head, dist
@@ -48,7 +54,7 @@ def move(direction, coordinate, reverse):
         angle = 0
         dist = coordinate - gps.x_position(MM)
     if ( direction == "left" ):
-        angle = 180
+        angle = -180
         dist = gps.x_position(MM) - coordinate
     if ( direction == "up" ):
         angle = -90 # 270
@@ -61,6 +67,7 @@ def move(direction, coordinate, reverse):
         drivetrain.drive_for(FORWARD, dist, MM, wait=True)
     else:
         drivetrain.drive_for(REVERSE, -dist, MM, wait=True)
+    
 
 def pick_up():
     fork_motor_group.spin_to_position(1500, DEGREES, wait=True)
@@ -73,20 +80,35 @@ def main():
     global stage
     monitor_variable("stage")
     drivetrain.set_drive_velocity(100,PERCENT)
-    goto(-1400, 0, 0)
-
-
     fork_motor_group.spin_to_position(1800, DEGREES, wait=False)
-    stage = "Pick up red goal 1"    
-    move("right",  -500, 0)
-    move("up",    1500, 0)
-    move("right",  920, 0)
+    stage = "Pick up red goal 1"
+
+    goto( -1020, 1320, 0)
+    goto(  -920, 1220, 0)
+    goto(  -920,-1450, 0)
     pick_up()
-    move("up",    1500, 0)
-    move("left",  -550, 0)
+    goto(   400,-1200, 0)
+    set_down()
+    goto(   600,-1400, 1)
+
+#    goto( -500, 1320, 0)
+#    goto( -500, 1500, 0)
+    goto(  920, 1500, 0)
+    pick_up()
+    goto(  920, 1510, 0)
+    goto( -550, 1510, 0)
     set_down()
 
-    goto(2, 3, 0)
+
+
+#    move("right",  -500, 0)
+#    move("up",    1500, 0)
+#    move("right",  920, 0)
+#    pick_up()
+#    move("up",    1500, 0)
+#    move("left",  -550, 0)
+#   set_down()
+
 
     stage = "Pick up red goal 2"    
     move("left",   950, 1)
