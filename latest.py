@@ -3,9 +3,9 @@
 #   Project:            New goto funtion
 #   Description:        Just point the target coordinates
 #                       
-#   Date:               02.12.2021
-#   Maximum score:      42 points
-#   Time left:          39 seconds
+#   Date:               03.12.2021
+#   Maximum score:      70 points
+#   Time left:          31 seconds
 #
 #   Starting position:  A
 #   Orientation:        Facing East (standard, 0 for the robot)
@@ -83,8 +83,9 @@ def main():
     fork_motor_group.spin_to_position(1800, DEGREES, wait=False)
     stage = "Pick up red goal 1"
 
-    goto( -1020, 1320, 0)
-    goto(  -920, 1220, 0)
+#    goto( -1020, 1320, 0)
+#    goto(  -920, 1220, 0)
+    goto(  -920, 1320, 0)
     goto(  -920,-1450, 0)
     pick_up()
     goto(   400,-1200, 0)
