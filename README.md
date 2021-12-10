@@ -12,123 +12,74 @@ Programs for team 76209X of the SSIS Dragons X. Code, functions and highscores c
 - 11/01/2021 102 points
 - 11/06/2021 111 points
 - 11/08/2021 130 points
-- 11/23/2021 173 points
+- 11/23/2021 173 points in 57 seconds
+- 12/10/2021 130 points in 30 seconds, new `goto` function
 
 ![173 points](docs/173points.png)
 
 ## Latest code
 
-Created November 8th. With the new `move(direction, coordinate, reverse)` function.
-
-Possible update: rewrite the `move` function to `move( x-coordinate, y-coordinate, reverse)` and adjust the direction with starting position (GPS) and trigonometry. And then add more locations within one minute.
+Created December 10th. With the new `goto( x-coordinate, y-coordinate, reverse)` function, using GPS and trigonometry. 
 
 ``` py
-----------------------------------------------------------------------
-#   
-#   Project:            Calling GPS functions
-#   Description:        Get more than 100 points with GPS
-#                       Driving style: drive, check, correct
-#   Date:               08.11.2021
-#   Maximum score:      130 points
-#   Time left:          10 seconds
-#
-#   Starting position:  A
-#   Orientation:        Facing East (standard)
-#   Preload:            Zero Rings
-#
-#----------------------------------------------------------------------
-
-# Library imports
+# 130 points - 60 lines - 30 seconds - 09.12.2021
 from vexcode_vrc import *
+from math import sqrt
 
-def move(direction, coordinate, reverse):
-    global angle, x, y, head, dist
-    angle = 0
-    x = gps.x_position(MM)
-    y = gps.y_position(MM)
-    head = gps.heading()   # north is 0, but for the robot 0 is east - from start    
-    monitor_variable("angle","dist","x","y","head") 
-    if ( direction == "right" ):
-        angle = 0
-        dist = coordinate - gps.x_position(MM)
-    if ( direction == "left" ):
-        angle = 180
-        dist = gps.x_position(MM) - coordinate
-    if ( direction == "up" ):
-        angle = 270
-        dist = coordinate - gps.y_position(MM)
-    if ( direction == "down" ):
-        angle = 90
-        dist = gps.y_position(MM) - coordinate
-    drivetrain.turn_to_heading(angle, DEGREES, wait=True)
-    if (reverse == 0):
-        drivetrain.drive_for(FORWARD, dist, MM, wait=True)
+def main():
+    drivetrain.set_drive_velocity(100,PERCENT)
+    fork_motor_group.spin_to_position(1800, DEGREES, wait=False)
+    goto( -920,  920, 0)
+    goto( -920,-1450, 0)
+    goto(  750,-1400, 0) # blue in right zone
+    goto(  500,-1150, 1)
+#   goto(    0, -950, 0) # m = - 2/5
+    goto( -600, -710, 0) # yellow in left zone
+    goto(  400, -250, 1)
+    goto(    0,    0, 0) # m = - 5/8
+    goto( -600,  200, 0) # yellow in left zone
+    goto(  400,  400, 1)
+    goto(    0,  950, 0)
+    goto( -600,  950, 0) # yellow in left zone
+    goto(  920,  950, 1)
+    goto(  920, 1500, 0)
+    goto( -600, 1320, 0) # red in left zone
+    goto(  600,  600, 1)
+    goto(  600, -600, 1)
+    goto( 1400,-1350, 1)
+    goto( 1500, -900, 0) # red on balance
+    pick_up() 
+    goto( 1500,  100, 0)
+    stop_project()
+
+def goto(target_x, target_y, reverse):
+    x1 = gps.x_position(MM)
+    y1 = gps.y_position(MM)
+    delta_x = target_x - x1
+    delta_y = target_y - y1
+    distance = math.sqrt(delta_x**2 + delta_y**2)     # pythagorean theorem
+    if ( delta_x == 0 ):
+        if ( delta_y < 0):
+            direction = 90
+        else:
+            direction = 270
     else:
-        drivetrain.drive_for(REVERSE, -dist, MM, wait=True)
-
+        direction = - math.atan(delta_y / delta_x) * 180 / math.pi
+    if ( delta_x < 0 ):
+        direction = direction + 180
+    if ( reverse != 0 ):
+        direction = direction + 180
+    if ( direction > 360 ):
+        direction = direction - 360
+    drivetrain.turn_to_heading(direction, DEGREES, wait=True)
+    if ( reverse != 0 ):
+        drivetrain.drive_for(REVERSE, distance, MM, wait=True)
+    else:
+        drivetrain.drive_for(FORWARD, distance, MM, wait=True)
 def pick_up():
     fork_motor_group.spin_to_position(1500, DEGREES, wait=True)
-
 def set_down():
     fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
 
-# Add project code in "main"
-def main():
-    global stage
-    stage = "Initiate system"
-    monitor_variable("stage")
-    drivetrain.set_drive_velocity(60,PERCENT)
-
-    stage = "Get 1st yellow goal"
-    fork_motor_group.spin_to_position(1800, DEGREES, wait=False)
-    move("right", -920, 0)
-    move("down", -1300, 0)
-    pick_up()
-    move("right", 1000, 0)
-    set_down()
-    move("right", -900, 1)
-
-    move("down",  -930, 0)
-    move("right", -180, 0)
-    pick_up()
-    move("right", -930, 0)
-    move("down",  -950, 0)
-    set_down()
-
-    stage = "Get 2nd yellow goal"
-    move("down",   -50, 1)
-    move("right", -180, 0)
-    pick_up()
-    move("right", -850, 0)
-    move("down",   -70, 0)
-    set_down()
-
-    stage = "Remove the blue goal"
-    move("down",  1200, 1)
-    move("left", -1500, 0)
-    move("down",   900, 0)
-    pick_up()
-    move("down",  1200, 0)
-    stage = "Put blue goal down"
-    drivetrain.turn_to_heading(180, DEGREES, wait=True)
-    move("up",    1450, 0)
-    set_down()
-    move("up",    1150, 1)
- 
-    stage = "Get 3rd yellow goal"
-    move("left",  -980, 1)
-    move("down",   900, 0)
-    move("right", -180, 0)
-    pick_up()
-    fork_motor_group.spin_to_position(400, DEGREES, wait=False)
-    move("right", -500, 0)
-    move("down",   920, 0)
-    move("left", -1500, 1)
-    move("down",   600, 0)
-    set_down()
-    move("down",  -100, 0)
-    stop_project()
-
-# VR threads - Do not delete
 vr_thread(main)
 ```
