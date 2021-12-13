@@ -1,5 +1,4 @@
-# tiny 70 points - 06.12.2021
-
+# 130 points - 60 lines - 30 seconds - 09.12.2021
 from vexcode_vrc import *
 from math import sqrt
 
@@ -8,22 +7,25 @@ def main():
     fork_motor_group.spin_to_position(1800, DEGREES, wait=False)
     goto( -920,  920, 0)
     goto( -920,-1450, 0)
-    pick_up()
-    goto(  750,-1200, 0)
-    set_down()
-    goto( 1000,-1300, 1)
+    goto(  750,-1400, 0) # blue in right zone
+    goto(  500,-1150, 1)
+#   goto(    0, -950, 0) # m = - 2/5
+    goto( -600, -710, 0) # yellow in left zone
+    goto(  400, -250, 1)
+    goto(    0,    0, 0) # m = - 5/8
+    goto( -600,  200, 0) # yellow in left zone
+    goto(  400,  400, 1)
+    goto(    0,  950, 0)
+    goto( -600,  950, 0) # yellow in left zone
+    goto(  920,  950, 1)
     goto(  920, 1500, 0)
-    pick_up()
-    goto( -600, 1320, 0)
-    set_down()
-
-    goto(  600, 1320, 1)
+    goto( -600, 1320, 0) # red in left zone
+    goto(  600,  600, 1)
     goto(  600, -600, 1)
     goto( 1400,-1350, 1)
-    goto( 1500, -900, 0)
-    pick_up()
+    goto( 1500, -900, 0) # red on balance
+    pick_up() 
     goto( 1500,  100, 0)
-    set_down()
     stop_project()
 
 def goto(target_x, target_y, reverse):
@@ -50,10 +52,8 @@ def goto(target_x, target_y, reverse):
         drivetrain.drive_for(REVERSE, distance, MM, wait=True)
     else:
         drivetrain.drive_for(FORWARD, distance, MM, wait=True)
-
 def pick_up():
     fork_motor_group.spin_to_position(1500, DEGREES, wait=True)
-
 def set_down():
     fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
 
