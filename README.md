@@ -12,11 +12,10 @@ Programs for team 76209 of the SSIS Dragons. Code, functions and highscores cons
 - 11/01/2021 102 points
 - 11/06/2021 111 points
 - 11/08/2021 130 points
-- 11/23/2021 173 points in 57 seconds
 - 12/10/2021 130 points in 30 seconds, new `goto` function
-- 04/12/2022 130 points in 30 seconds, but 25% less code with an array
+- 04/13/2022 130 points in 30 seconds, but only 42 lines, less code by using an array
 
-![173 points](docs/173points.png)
+![130 points](docs/130points.png)
 
 ## Latest code
 
