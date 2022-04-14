@@ -2,7 +2,7 @@
 
 Programs for team 76209X of the SSIS Dragons X
 
-Here is a recent code example:
+Here is a recent code example (130 points with 11 seconds left):
 
 ``` py
 # Library imports
