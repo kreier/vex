@@ -11,8 +11,8 @@ Programs for team 76209 of the SSIS Dragons. Code, functions and highscores cons
 - 10/08/2021 96 points
 - 11/01/2021 102 points
 - 11/06/2021 111 points
-- 11/08/2021 130 points
-- 12/10/2021 130 points in 30 seconds, new `goto` function
+- 11/08/2021 130 points with comments and some structured code
+- 12/10/2021 130 points in 30 seconds, new `goto` function, 60 lines
 - 04/13/2022 130 points in 30 seconds, but only 42 lines, less code by using an array
 
 ![130 points](docs/130points.png)
@@ -20,7 +20,7 @@ Programs for team 76209 of the SSIS Dragons. Code, functions and highscores cons
 ## Latest code
 
 ``` py
-# 130 points - 42 lines - 30 seconds - 13.04.2022
+# 130 points - 41 lines - 30 seconds - 15.04.2022
 from vexcode_vrc import *
 from math import sqrt
 path = [[-920,  920, 0],[-920,-1450, 0],[750, -1400, 0],[ 500,-1150, 1],[-600, -710, 0],
@@ -32,23 +32,22 @@ def goto(target_x, target_y, reverse):
     y1 = gps.y_position(MM)
     delta_x = target_x - x1
     delta_y = target_y - y1
+    direction_fr = FORWARD          # direction either FORWARD or REVERSE fr
     distance = math.sqrt(delta_x**2 + delta_y**2)     # pythagorean theorem
     if ( delta_x == 0 ):            # can't divide by zero, vertical motion
         direction = 90              # standard: drive upwards
         if ( delta_y > 0):
-            direction = 270         # otherwise down
+            direction = 270         # otherwise downwards
     else:
         direction = - math.atan(delta_y / delta_x) * 180 / math.pi
-    if ( delta_x < 0 ):             # atan range is [-180|180], but we need [0|360] 
+    if ( delta_x < 0 ):             # atan range is [-180|180] but need [0|360] 
         direction += 180
-    if ( reverse is 1 ):            # driving reverse in oposite calculated direction
+    if ( reverse is 1 ):            # driving reverse in opposite direction
         direction += 180
-    direction = direction % 360     # with the modulo % operator, range < 360 degrees
-    drivetrain.turn_to_heading(direction, DEGREES, wait=True)
-    if ( reverse != 0 ):
-        drivetrain.drive_for(REVERSE, distance, MM, wait=True)
-    else:
-        drivetrain.drive_for(FORWARD, distance, MM, wait=True)
+        direction_fr = REVERSE
+    direction = direction % 360     # with the modulo % operator, range < 360 
+    drivetrain.turn_to_heading(direction, DEGREES, wait=True)   # (1) DIRECTION
+    drivetrain.drive_for(direction_fr, distance, MM, wait=True) # (2) DRIVING
 def pick_up():
     fork_motor_group.spin_to_position(1500, DEGREES, wait=True)
 def set_down():
@@ -62,7 +61,6 @@ def main():
     goto( 1500,  100, 0)
     stop_project()
 vr_thread(main)
- 
 ```
 
 ## Historic code
