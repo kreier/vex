@@ -5,6 +5,10 @@
 
 Programs for team 76209 of the SSIS Dragons. Code, functions and highscores constantly improve. The online competition website is https://codev5.vex.com/
 
+The standing for the virtual teams is online at:
+
+https://www.robotevents.com/robot-competitions/vex-robotics-competition/virtualSkillsStandings
+
 ## Highscore
 
 - 09/27/2021 43 points
