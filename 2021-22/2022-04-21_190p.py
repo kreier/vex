@@ -1,4 +1,5 @@
 # 191 points - 80 lines - 54 seconds - 21.12.2021
+
 from vexcode_vrc import *
 from math import sqrt
 
@@ -72,8 +73,10 @@ def goto(target_x, target_y, reverse):
         drivetrain.drive_for(REVERSE, distance, MM, wait=True)
     else:
         drivetrain.drive_for(FORWARD, distance, MM, wait=True)
+        
 def pick_up():
     fork_motor_group.spin_to_position(1500, DEGREES, wait=True)
+    
 def set_down():
     fork_motor_group.spin_to_position(1800, DEGREES, wait=True)
 
