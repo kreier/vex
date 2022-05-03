@@ -26,7 +26,7 @@ https://kb.vex.com/hc/en-us/articles/360061375711-Identifying-Location-Details-i
 
 ![154 points](docs/2022-04-22_154p.png)
 
-## Latest code
+## Compact Code April 2022
 
 ``` py
 # 130 points - 41 lines - 30 seconds - 15.04.2022
@@ -71,6 +71,45 @@ def main():
     stop_project()
 vr_thread(main)
 ```
+## Improved goto function - May 2022
+
+``` py
+def goto(target_x, target_y, reverse):
+    x1 = gps.x_position(MM)
+    y1 = gps.y_position(MM)
+    d1 = gps.heading()              # gives angle 0-360 degrees, 0 is north
+    brain.screen.print("{:.0f}|{:.0f} to {:.0f}|{:.0f} ".format(x1, y1, target_x, target_y))
+    delta_x = target_x - x1
+    delta_y = target_y - y1
+    direction_fr = FORWARD          # direction either FORWARD or REVERSE fr -  or GLUE (2)
+    distance = math.sqrt(delta_x**2 + delta_y**2)     # pythagorean theorem
+    brain.screen.print("delta {:.0f}|{:.0f} > {:.0f}\n".format(delta_x, delta_y, distance))
+    if ( delta_y == 0 ):            # can't divide by zero, horizontal motion
+        direction = 90              # standard: drive to the right
+        if ( delta_x < 0):
+            direction = 270         # otherwise drive to the left
+    else:
+        direction = math.atan(delta_x / delta_y) * 180 / math.pi
+    if ( delta_y < 0 ):             # atan range is [-180|180], but we need [0|360] 
+        direction += 180
+    if ( reverse is 1 ):            # driving reverse in oposite calculated direction
+        direction += 180
+        direction_fr = REVERSE
+    if ( reverse is 2 ):            # special "glue" mode, driving backwards with forwards
+        distance = distance * (-1)  # using a negative distance
+        direction += 180
+    direction = direction % 360     # with the modulo % operator, range < 360 degrees
+    turn_degrees = direction - d1
+    if(turn_degrees > 180):
+        turn_degrees -= 360
+    if(turn_degrees < -180):
+        turn_degrees += 360
+    brain.screen.print("Direction: {:.0f}|{:.0f} > {:.0f} \n".format(d1, direction, turn_degrees))
+    drivetrain.turn_for(RIGHT, turn_degrees, DEGREES)
+#    drivetrain.turn_to_heading(direction, DEGREES, wait=True)
+    drivetrain.drive_for(direction_fr, int(distance), MM, wait=True)
+```
+
 
 ## Historic code
 
