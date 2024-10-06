@@ -1,4 +1,17 @@
-# VEX
+# VEX History
+
+This repository started in September 2021 to document the virtual skills of team 76209 at SSIS, since all teaching was done online due to the ongoing Covid-19 pandemic. Until the end of 2022 no team was allowed to travel, so even a year later we could not visit Taipei for the Signature Event. But by summer 2023 all restrictions were virtually gone, so this repository turned into a little history of VEX at SSIS and in Vietnam. For season 2024-2025 High Stakes there are 4 teams to represent Vietnam at the V5RC World Championship in Dallas, like the year before. Here is a list:
+
+- 2025 High Stakes 1x MS, 3x HS:
+- 2024 [Over Under](https://www.robotevents.com/robot-competitions/vex-robotics-competition/RE-VRC-23-3691.html#general-info) 1x MS: [36070A](https://www.robotevents.com/teams/V5RC/36070A) PENN APPLE JUICE, 3x [High School](https://www.robotevents.com/robot-competitions/vex-robotics-competition/RE-VRC-23-3690.html#general-info): [36070M](https://www.robotevents.com/teams/V5RC/36070M) 11, [36070J](https://www.robotevents.com/teams/V5RC/36070J) LSTS FATE, [36070F](https://www.robotevents.com/teams/V5RC/36070F) PENN MÌ Ý
+- 2023 [Spin Up](https://www.robotevents.com/robot-competitions/vex-robotics-competition/RE-VRC-22-9726.html#general-info) 1x Middle School: [76209M](https://www.robotevents.com/teams/V5RC/76209M) Mission Impossible , 1x High School: [76209R](https://www.robotevents.com/teams/V5RC/76209R) Raccoons
+- 2022 Tipping Point (Covid-19)
+- 2021 Change-Up (Covid-19)
+- 2020 [Tower Takeover](https://www.robotevents.com/robot-competitions/vex-robotics-competition/RE-VRC-19-8379.html#general-info) 1x High school: [76209G](https://www.robotevents.com/teams/V5RC/76209G)
+- 2019 [Turning Point](https://www.robotevents.com/robot-competitions/vex-robotics-competition/RE-VRC-18-6082.html#general-info) 1x High School: [76209X](https://www.robotevents.com/teams/V5RC/76209X)
+- 2018 [In the Zone](https://www.robotevents.com/robot-competitions/vex-robotics-competition/RE-VRC-17-3805.html#general-info) 1x High School: [76209G](https://www.robotevents.com/teams/V5RC/76209G)
+
+## VEX at SSIS for 2021-2022 Tipping Point
 
 [![GitHub release](https://img.shields.io/github/release/kreier/vex.svg)](https://GitHub.com/kreier/vex/releases/)
 [![MIT license](https://img.shields.io/github/license/kreier/vex)](https://kreier.mit-license.org/)
