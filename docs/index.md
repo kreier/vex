@@ -11,6 +11,8 @@ This repository started in September 2021 to document the virtual skills of team
 - 2019 [Turning Point](https://www.robotevents.com/robot-competitions/vex-robotics-competition/RE-VRC-18-6082.html#general-info) 1x High School: [76209X](https://www.robotevents.com/teams/V5RC/76209X)
 - 2018 [In the Zone](https://www.robotevents.com/robot-competitions/vex-robotics-competition/RE-VRC-17-3805.html#general-info) 1x High School: [76209G](https://www.robotevents.com/teams/V5RC/76209G)
 
+A little more history for the teams starting with 76209 from 2016 to 2023 at SSIS can be found in [this PDF document](76209_VEX_at_SSIS_2016-2023.pdf) on 85 pages. Starting summer 2023 the new team number is 1599.
+
 ## VEX at SSIS for 2021-2022 Tipping Point
 
 [![GitHub release](https://img.shields.io/github/release/kreier/vex.svg)](https://GitHub.com/kreier/vex/releases/)
