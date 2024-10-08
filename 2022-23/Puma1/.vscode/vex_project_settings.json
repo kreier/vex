@@ -1,0 +1,18 @@
+{
+	"project": {
+		"name": "Puma1",
+		"slot": 1,
+		"description": "Drive autonomous",
+		"platform": "V5",
+		"creationDate": "Wed, 10 May 2023 11:51:32 GMT",
+		"language": "cpp",
+		"sdkVersion": "V5_20220726_10_00_00",
+		"cpp": {
+			"includePath": []
+		}
+	},
+	"extension": {
+		"version": "0.4.1",
+		"json": 1
+	}
+}
